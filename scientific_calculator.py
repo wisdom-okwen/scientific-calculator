@@ -25,11 +25,6 @@ row5 = 5
 row6 = 6
 row7 = 7
 
-
-
-
-
-
 entry = Entry(root, width=70, fg='blue', bg='#77eebb', borderwidth=5) #create entry field
 
 #create each button on calculator
@@ -82,8 +77,6 @@ ten_exponent = Button(root, text='x10^a', padx=other_x, pady=y_size, fg=button_f
 pie = Button(root, text='pi', padx='46', pady=y_size, fg=button_fg, bg=button_bg)
 equal = Button(root, text='=', padx='47', pady=y_size, fg=button_fg, bg=button_bg)
 
-#auxiliary features
-#entry.insert(0, 'Calc is ready')
 
 #entry field (row zero)
 entry.grid(row=0, column=0, columnspan=5, padx=30, pady=10)
@@ -136,6 +129,5 @@ dot.grid(row=row7, column=col1)
 ten_exponent.grid(row=row7, column=col2)
 pie.grid(row=row7, column=col3)
 equal.grid(row=row7, column=col4)
-
 
 root.mainloop()
