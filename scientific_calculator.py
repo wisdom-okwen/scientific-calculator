@@ -1,7 +1,6 @@
 from tkinter import *
 
-from matplotlib.pyplot import title
-
+from math import *
 root = Tk()
 root.title('Scientific Calculator')
 
@@ -9,7 +8,6 @@ button_bg = '#dddddd' #set color of text on button
 button_fg = '#444444'   #set button background color
 x_size = '22'   #set width of button
 y_size = '10'   #set height of button
-other_x = '35'
 
 #column numbers and row numbers
 col0 = 0
@@ -25,57 +23,352 @@ row5 = 5
 row6 = 6
 row7 = 7
 
+"""functions for buttons"""
+def button_click(number):    
+    current = entry.get()
+    entry.delete(0, END) 
+    entry.insert(0, (str(current) + str(number)))
+
+def fxn_squ_root():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'squ_root'
+    entry.delete(0, END)
+
+def fxn_squared():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'squared'
+    entry.delete(0, END)
+
+def fxn_pow_x():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'pow_x'
+    entry.delete(0, END)
+
+def fxn_logarithm():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'logarithm'
+    entry.delete(0, END)
+
+def fxn_log_a_b():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'log_a_b'
+    entry.delete(0, END)
+
+def fxn_sine():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'sine'
+    entry.delete(0, END)
+
+def fxn_cosine():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'cosine'
+    entry.delete(0, END)
+    
+def fxn_tangent():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'tangent'
+    entry.delete(0, END)
+    
+def fxn_arcsine():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'arcsine'
+    entry.delete(0, END)
+    
+def fxn_arccos():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'arccos'
+    entry.delete(0, END)
+    
+def fxn_arctan():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'arctan'
+    entry.delete(0, END)
+    
+def fxn_inverse():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'inverse'
+    entry.delete(0, END)
+    
+def fxn_ln():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'ln'
+    entry.delete(0, END)
+    
+def fxn_exponential():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'exponential'
+    entry.delete(0, END)
+    
+def fxn_factorial():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'factorial'
+    entry.delete(0, END)
+    
+
+def fxn_backspace():
+    pass
+
+def fxn_clear():
+    entry.delete(0, END)
+
+def fxn_mult():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'mult'
+    entry.delete(0, END)
+    
+def fxn_divide():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'divide'
+    entry.delete(0, END)
+
+def fxn_plus():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'plus'
+    entry.delete(0, END)
+    
+def fxn_minus():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'minus'
+    entry.delete(0, END)
+    
+def fxn_dot():
+    pass
+
+def fxn_ten_exponent():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'ten_exponent'
+    entry.delete(0, END)
+    
+def fxn_pi():
+    global f_num
+    global operation
+    f_num = float(entry.get())
+    operation = 'pi'
+    entry.delete(0, END)
+    
+def fxn_equal():
+    second_number = entry.get()
+    entry.delete(0, END)
+    if operation == 'squ_root':
+        try:
+            op = '{:.6f}'.format(pow(f_num, 0.5))
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'squared':
+        try:
+            op = pow(f_num, 2)
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'pow_x':
+        try:
+            op = '{:.6f}'.format(pow(f_num, float(second_number)))
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'logarithm':
+        try:
+            op = '{:.6f}'.format(log10(f_num))
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'log_a_b':
+        try:
+            op = '{:.6f}'.format(log(f_num, float(second_number)))
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'sine':
+        try:
+            op = '{:.6f}'.format(sin(f_num))
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'cosine':
+        try:
+            op = '{:.6f}'.format(cos(f_num))
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'tangent':
+        try:
+            op = '{:.6f}'.format(tan(f_num))
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'arcsine':
+        try:
+            op = '{:.6f}'.format(asin(f_num)*180/pi)
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'arccos':
+        try:
+            op = '{:.6f}'.format(acos(f_num)*180/pi)
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'arctan':
+        try:
+            op = '{:.6f}'.format(atan(f_num)*180/pi)
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'inverse':
+        try:
+            op = '{:.6f}'.format(1/f_num)
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'ln':
+        try:
+            op = '{:.6f}'.format(log(f_num))
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'exponential':
+        try:
+            op = '{:.6f}'.format(exp(f_num))
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'factorial':
+        try:
+            if f_num == 0:
+                entry.insert(0, 1)
+            else:
+                i = float(f_num)
+                fact = 1
+                while i > 0:
+                    fact *= i
+                    i -= 1
+                entry.insert(0, int(fact))
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'mult':
+        try:
+            op = f_num*float(second_number)
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'divide':
+        try:
+            op = '{:.6f}'.format(f_num/float(second_number))
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'plus':
+        try:
+            op = f_num + float(second_number)
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'minus':
+        try:
+            op = f_num - float(second_number)
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+    elif operation == 'ten_exponent':
+        try:
+            op = f_num*pow(10, float(second_number))
+            entry.insert(0, op)
+        except:
+            entry.insert(0, 'Error!')
+
+
 entry = Entry(root, width=70, fg='blue', bg='#77eebb', borderwidth=5) #create entry field
 
 #create each button on calculator
 #row 1
-squ_root = Button(root, text='sqrt(x)', padx=x_size, pady=y_size, fg=button_fg, bg=button_bg)
-squared = Button(root, text='x^2', padx='37', pady=y_size, fg=button_fg, bg=button_bg)
-pow_x = Button(root, text='x^y', padx='40', pady=y_size, fg=button_fg, bg=button_bg)
-logarithm = Button(root, text='log(x)', padx='35', pady=y_size, fg=button_fg, bg=button_bg)
-log_a_b = Button(root, text='logb(a)', padx='33', pady=y_size, fg=button_fg, bg=button_bg)
+squ_root = Button(root, text='sqrt(x)', padx=x_size, pady=y_size, fg=button_fg, bg=button_bg, command=lambda: fxn_squ_root())
+squared = Button(root, text='x^2', padx='37', pady=y_size, fg=button_fg, bg=button_bg, command=lambda: fxn_squared())
+pow_x = Button(root, text='x^a', padx='40', pady=y_size, fg=button_fg, bg=button_bg, command=lambda: fxn_pow_x())
+logarithm = Button(root, text='log(x)', padx='35', pady=y_size, fg=button_fg, bg=button_bg, command=lambda: fxn_logarithm())
+log_a_b = Button(root, text='logb(a)', padx='33', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:fxn_log_a_b())
 
 #row 2
-sine = Button(root, text='sin(x)', padx='24', pady=y_size, fg=button_fg, bg=button_bg)
-cosine = Button(root, text='cos(x)', padx='30', pady=y_size, fg=button_fg, bg=button_bg)
-tangent = Button(root, text='tan(x)', padx='35', pady=y_size, fg=button_fg, bg=button_bg)
-arcsin = Button(root, text='asin(x)', padx='33', pady=y_size, fg=button_fg, bg=button_bg)
-arccos = Button(root, text='acos(x)', padx='33', pady=y_size, fg=button_fg, bg=button_bg)
+sine = Button(root, text='sin(x)', padx='24', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:fxn_sine())
+cosine = Button(root, text='cos(x)', padx='30', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:fxn_cosine())
+tangent = Button(root, text='tan(x)', padx='35', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_tangent())
+arcsin = Button(root, text='asin(x)', padx='33', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:fxn_arcsine())
+arccos = Button(root, text='acos(x)', padx='33', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:fxn_arccos())
 
 #row 3
-arctan = Button(root, text='atan(x)', padx='19.5', pady=y_size, fg=button_fg, bg=button_bg)
-inverse = Button(root, text='x^-1', padx='34', pady=y_size, fg=button_fg, bg=button_bg)
-ln = Button(root, text='ln(x)', padx='38.5', pady=y_size, fg=button_fg, bg=button_bg)
-exponential = Button(root, text='e^x', padx='40', pady=y_size, fg=button_fg, bg=button_bg)
-factorial = Button(root, text='x!', padx='47', pady=y_size, fg=button_fg, bg=button_bg)
+arctan = Button(root, text='atan(x)', padx='19.5', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_arctan())
+inverse = Button(root, text='x^-1', padx='34', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:fxn_inverse())
+ln = Button(root, text='ln(x)', padx='38.5', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_ln())
+exponential = Button(root, text='e^x', padx='40', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_exponential())
+factorial = Button(root, text='x!', padx='47', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_factorial())
 
 #row 4
-b7 = Button(root, text='7', padx='35.5', pady=y_size, fg=button_fg, bg=button_bg)
-b8 = Button(root, text='8', padx='43', pady=y_size, fg=button_fg, bg=button_bg)
-b9 = Button(root, text='9', padx='46.5', pady=y_size, fg=button_fg, bg=button_bg)
-back_space = Button(root, text='Del', padx='43', pady=y_size, fg=button_fg, bg=button_bg)
-clear = Button(root, text='AC', padx='43', pady=y_size, fg=button_fg, bg=button_bg)
+b7 = Button(root, text='7', padx='35.5', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(7))
+b8 = Button(root, text='8', padx='43', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:button_click(8))
+b9 = Button(root, text='9', padx='46.5', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(9))
+back_space = Button(root, text='Del', padx='43', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_backspace())
+clear = Button(root, text='AC', padx='43', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_clear())
 
 #row 5
-b4 = Button(root, text='4', padx='35.5', pady=y_size, fg=button_fg, bg=button_bg)
-b5 = Button(root, text='5', padx='44', pady=y_size, fg=button_fg, bg=button_bg)
-b6 = Button(root, text='6', padx='47', pady=y_size, fg=button_fg, bg=button_bg)
-mult = Button(root, text='x', padx='48', pady=y_size, fg=button_fg, bg=button_bg)
-divided = Button(root, text='/', padx='49', pady=y_size, fg=button_fg, bg=button_bg)
+b4 = Button(root, text='4', padx='35.5', pady=y_size, fg=button_fg, bg=button_bg, command=lambda: button_click(4))
+b5 = Button(root, text='5', padx='44', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(5))
+b6 = Button(root, text='6', padx='47', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(6))
+mult = Button(root, text='*', padx='48', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_mult())
+divided = Button(root, text='/', padx='49', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:fxn_divide())
 
 #row 6
-b1 = Button(root, text='1', padx='35.5', pady=y_size, fg=button_fg, bg=button_bg)
-b2 = Button(root, text='2', padx='44', pady=y_size, fg=button_fg, bg=button_bg)
-b3 = Button(root, text='3', padx='48', pady=y_size, fg=button_fg, bg=button_bg)
-plus = Button(root, text='+', padx='48', pady=y_size, fg=button_fg, bg=button_bg)
-minus = Button(root, text='-', padx='48', pady=y_size, fg=button_fg, bg=button_bg)
+b1 = Button(root, text='1', padx='35.5', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:button_click(1))
+b2 = Button(root, text='2', padx='44', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(2))
+b3 = Button(root, text='3', padx='48', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(3))
+plus = Button(root, text='+', padx='48', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_plus())
+minus = Button(root, text='-', padx='48', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_minus())
 
 #row 7
-zero = Button(root, text='0', padx='35.5', pady=y_size, fg=button_fg, bg=button_bg)
-dot = Button(root, text='.', padx='44', pady=y_size, fg=button_fg, bg=button_bg)
-ten_exponent = Button(root, text='x10^a', padx=other_x, pady=y_size, fg=button_fg, bg=button_bg)
-pie = Button(root, text='pi', padx='46', pady=y_size, fg=button_fg, bg=button_bg)
-equal = Button(root, text='=', padx='47', pady=y_size, fg=button_fg, bg=button_bg)
+zero = Button(root, text='0', padx='35.5', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(0))
+dot = Button(root, text='.', padx='44', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_dot())
+ten_exponent = Button(root, text='x10^a', padx='35', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_ten_exponent())
+pie = Button(root, text='pi', padx='46', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(pi))
+equal = Button(root, text='=', padx='47', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_equal())
 
 
 #entry field (row zero)
