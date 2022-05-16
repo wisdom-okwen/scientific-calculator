@@ -3,6 +3,7 @@ from tkinter import *
 from math import *
 root = Tk()
 root.title('Scientific Calculator')
+root.iconbitmap('C:/Users/USER/Documents/GitHub/scientific-calculator/images/icon.jpeg')
 
 button_bg = '#dddddd' #set color of text on button
 button_fg = '#444444'   #set button background color
@@ -186,6 +187,12 @@ def fxn_pi():
     operation = 'pi'
     entry.delete(0, END)
     
+def open_brac():
+    pass
+
+def close_brac():
+    pass
+    
 def fxn_equal():
     second_number = entry.get()
     entry.delete(0, END)
@@ -233,7 +240,7 @@ def fxn_equal():
             entry.insert(0, 'Error!')
     elif operation == 'tangent':
         try:
-            op = '{:.6f}'.format(tan(f_num))
+            op = '{:.6f}'.forma (tan(f_num))
             entry.insert(0, op)
         except:
             entry.insert(0, 'Error!')
@@ -319,6 +326,7 @@ def fxn_equal():
 
 
 entry = Entry(root, width=70, fg='blue', bg='#77eebb', borderwidth=5) #create entry field
+_exit = Button(root, text='Exit', command=root.quit) #create an exit button
 
 #create each button on calculator
 #row 1
@@ -339,13 +347,13 @@ arccos = Button(root, text='acos(x)', padx='33', pady=y_size, fg=button_fg, bg=b
 arctan = Button(root, text='atan(x)', padx='19.5', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_arctan())
 inverse = Button(root, text='x^-1', padx='34', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:fxn_inverse())
 ln = Button(root, text='ln(x)', padx='38.5', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_ln())
-exponential = Button(root, text='e^x', padx='40', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_exponential())
+exponential = Button(root, text='e^x', padx='41', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_exponential())
 factorial = Button(root, text='x!', padx='47', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_factorial())
 
 #row 4
 b7 = Button(root, text='7', padx='35.5', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(7))
 b8 = Button(root, text='8', padx='43', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:button_click(8))
-b9 = Button(root, text='9', padx='46.5', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(9))
+b9 = Button(root, text='9', padx='47', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(9))
 back_space = Button(root, text='Del', padx='43', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_backspace())
 clear = Button(root, text='AC', padx='43', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_clear())
 
@@ -353,8 +361,8 @@ clear = Button(root, text='AC', padx='43', pady=y_size, fg=button_fg, bg=button_
 b4 = Button(root, text='4', padx='35.5', pady=y_size, fg=button_fg, bg=button_bg, command=lambda: button_click(4))
 b5 = Button(root, text='5', padx='44', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(5))
 b6 = Button(root, text='6', padx='47', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(6))
-mult = Button(root, text='*', padx='48', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_mult())
-divided = Button(root, text='/', padx='49', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:fxn_divide())
+mult = Button(root, text='*', padx='49', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_mult())
+divided = Button(root, text='/', padx='48', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:fxn_divide())
 
 #row 6
 b1 = Button(root, text='1', padx='35.5', pady=y_size, fg=button_fg, bg=button_bg, command=lambda:button_click(1))
@@ -369,6 +377,11 @@ dot = Button(root, text='.', padx='44', pady=y_size, fg=button_fg, bg=button_bg,
 ten_exponent = Button(root, text='x10^a', padx='35', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_ten_exponent())
 pie = Button(root, text='pi', padx='46', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:button_click(pi))
 equal = Button(root, text='=', padx='47', pady=y_size, fg=button_fg, bg=button_bg,command=lambda:fxn_equal())
+
+#row 8
+open_par = Button(root, text='(', padx=37, pady=20, fg=button_fg, bg=button_bg, command=lambda:open_brac())
+close_par = Button(root, text=')', padx=44, pady=20, fg=button_fg, bg=button_bg, command=lambda:close_brac())
+_exit = Button(root, text='Exit', padx=155, pady=20, fg=button_fg, bg=button_bg, command=root.quit) #create an exit button
 
 
 #entry field (row zero)
@@ -423,4 +436,8 @@ ten_exponent.grid(row=row7, column=col2)
 pie.grid(row=row7, column=col3)
 equal.grid(row=row7, column=col4)
 
+#eigth row buttons
+open_par.grid(row=8, column=0)
+close_par.grid(row=8, column=1)
+_exit.grid(row=8, column=2, columnspan=3)
 root.mainloop()
