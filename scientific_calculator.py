@@ -1,6 +1,7 @@
 from tkinter import *
 
 from math import *
+from xml.dom.pulldom import END_DOCUMENT
 root = Tk()
 root.title('Scientific Calculator')
 root.iconbitmap('C:/Users/USER/Documents/GitHub/scientific-calculator/images/icon.jpeg')
@@ -137,7 +138,10 @@ def fxn_factorial():
     
 
 def fxn_backspace():
-    pass
+    a = entry.get()
+    entry.delete(0, END)
+    entry.insert(0, float(a)//10)
+    
 
 def fxn_clear():
     entry.delete(0, END)
@@ -171,7 +175,10 @@ def fxn_minus():
     entry.delete(0, END)
     
 def fxn_dot():
-    pass
+    f_num = entry.get()
+    entry.delete(0, END)
+    entry.insert(0, f_num+'.')
+    
 
 def fxn_ten_exponent():
     global f_num
@@ -308,7 +315,7 @@ def fxn_equal():
     elif operation == 'plus':
         try:
             op = f_num + float(second_number)
-            entry.insert(0, op)
+            entry.insert(0, int(op))
         except:
             entry.insert(0, 'Error!')
     elif operation == 'minus':
