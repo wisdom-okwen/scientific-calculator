@@ -1,7 +1,6 @@
 from tkinter import *
-
 from math import *
-from xml.dom.pulldom import END_DOCUMENT
+
 root = Tk()
 root.title('Scientific Calculator')
 root.iconbitmap('C:/Users/USER/Documents/GitHub/scientific-calculator/images/icon.jpeg')
